@@ -34,14 +34,21 @@ public class PageLimitDelegate<T> {
      * @param recyclerView
      * @param quickAdapter
      */
-    public void attach(RefreshLayout refreshLayout, RecyclerView recyclerView, BaseQuickAdapter<T,?> quickAdapter) {
+    public void attach(final RefreshLayout refreshLayout, RecyclerView recyclerView, BaseQuickAdapter<T,?> quickAdapter) {
         this.quickAdapter=quickAdapter;
         this.refreshLayout=refreshLayout;
         refreshLayout.setEnabled(true);
         refreshLayout.setOnRefreshingListener(new RefreshLayout.OnRefreshingListener() {
             @Override
             public void onRefresh() {
-                refreshPage();
+                refreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //获取网络数据，更新页面之后
+                        refreshPage();
+                    }
+                }, 2000);
+
             }
         });
         quickAdapter.setEnableLoadMore(true);

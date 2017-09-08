@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.yanjiabin.pulltorefresh.activity.GeneralItemActivity"></activity>
+        <activity android:name=".activity.GeneralItemActivity" />
+        <activity android:name=".activity.GridViewItemActivity"></activity>
     </application>
 
 </manifest>
