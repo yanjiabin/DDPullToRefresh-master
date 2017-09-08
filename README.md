@@ -1,5 +1,8 @@
-DDPullToRefresh
-====
+# screenshot
+
+![](https://github.com/yanjiabin/DDPullToRefresh-master/blob/master/pic/maituan.gif)
+![](https://github.com/yanjiabin/DDPullToRefresh-master/blob/master/pic/normal.gif)
+## 
 Step 1. Add the JitPack repository to your build file</br>
 Add it in your root build.gradle at the end of repositories:</br>
 ```Java
