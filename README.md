@@ -49,19 +49,7 @@ Step 2. Add the dependency
 		refreshLayout.setSelfHeaderViewManager(new MeiTuanSelfHeaderViewManager(this));
 		pageLimitDelegate.attach(refreshLayout, mRecyclerView, mAdapter); //pageLimitDelegate  这个是一个分页管理类
 		
-		//这里只是为了做测试就设置监听时间是两秒,如果是网络请求的话就不需要写这个 因为已经封装了下拉刷新
-		refreshLayout.setOnRefreshingListener(new RefreshLayout.OnRefreshingListener() {
-		    @Override
-		    public void onRefresh() {
-			refreshLayout.postDelayed(new Runnable() {
-			    @Override
-			    public void run() {
-				//获取网络数据，更新页面之后
-				refreshLayout.endRefreshing();
-			    }
-			}, 2000);
-		    }
-		});
+		
 ```
 ####  需要注意的是
 这里的上拉加载我使用的是 BaseRecyclerViewAdapterHelper 这个库,个人感觉挺不错的,我开发的项目中也都是用的这个库,挺实用的,推荐给大家.
