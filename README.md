@@ -1,5 +1,5 @@
 # screenshot
-<a href="https://github.com/yanjiabin/DDPullToRefresh-master/blob/master/pic/maituan.gif" width="40%"/></a> <a href="https://github.com/yanjiabin/DDPullToRefresh-master/blob/master/pic/normal.gif"><img src="art/02.jpg" width="40%"/></a>
+<a href="pic/maituan.gif" width="40%"/></a> <a href="pic/normal.gif"><img src="art/02.jpg" width="40%"/></a>
 ## 
 Step 1. Add the JitPack repository to your build file</br>
 Add it in your root build.gradle at the end of repositories:</br>
