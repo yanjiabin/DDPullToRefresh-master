@@ -16,24 +16,53 @@ Add it in your root build.gradle at the end of repositories:</br>
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.yanjiabin:DDPullToRefresh:1.0.0'
+	        compile 'com.github.yanjiabin:DDPullToRefresh-master:v1.0'
 	}
 ```
-基本使用
+#### in your xml
+```java
+	<?xml version="1.0" encoding="utf-8"?>
+	<com.yanjiubin.pulltorefreshlibrary.RefreshLayout
+	    android:id="@+id/refresh_layout"
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+
+	    <!-- 当然这里我使用的是recyecleview -->
+	    <android.support.v7.widget.RecyclerView
+		android:id="@+id/recycleview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	</com.yanjiubin.pulltorefreshlibrary.RefreshLayout>
+
+```
 ```Java
-final RefreshLayout refreshLayout = (RefreshLayout) findViewById(R.id.refresh_layout);
-//美团的效果就是new MeiTuanSelfHeaderViewManager(this)，基本的下拉效果new NormalSelfHeaderViewManager(this)
-refreshLayout.setSelfHeaderViewManager(new MeiTuanSelfHeaderViewManager(this));
+	 refreshLayout = (RefreshLayout) findViewById(R.id.refresh_layout);
+		mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
+		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+		mRecyclerView.setNestedScrollingEnabled(false);
+		mAdapter = new TextAdapter();
+		mRecyclerView.setAdapter(mAdapter);
+		//美团的效果就是new MeiTuanSelfHeaderViewManager(this)，基本的下拉效果new NormalSelfHeaderViewManager(this)
+		refreshLayout.setSelfHeaderViewManager(new MeiTuanSelfHeaderViewManager(this));
+		pageLimitDelegate.attach(refreshLayout, mRecyclerView, mAdapter); //pageLimitDelegate  这个是一个分页管理类
+		
+		//这里只是为了做测试就设置监听时间是两秒,如果是网络请求的话就不需要写这个 因为已经封装了下拉刷新
 		refreshLayout.setOnRefreshingListener(new RefreshLayout.OnRefreshingListener() {
-			@Override
-			public void onRefresh() {
-				refreshLayout.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						//获取网络数据，更新页面之后
-						refreshLayout.endRefreshing();
-					}
-				},2000);
-			}
+		    @Override
+		    public void onRefresh() {
+			refreshLayout.postDelayed(new Runnable() {
+			    @Override
+			    public void run() {
+				//获取网络数据，更新页面之后
+				refreshLayout.endRefreshing();
+			    }
+			}, 2000);
+		    }
 		});
 ```
+####  需要注意的是
+这里的上拉加载我使用的是 BaseRecyclerViewAdapterHelper 这个库,个人感觉挺不错的,我开发的项目中也都是用的这个库,挺实用的,推荐给大家.
+recycleView 搭配BaseRecyclerViewAdapterHelper可以基本上可以解决所有的列表展示.下拉刷新的和上拉加载的逻辑都封装在了pageLimitDelegate这个分页管理类中,  我们只需要请求数据的类 implements PageLimitDelegate.DataProvider 就行了 然后在重写的 loadData(int page) 中去请求数据.
