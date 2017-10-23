@@ -36,7 +36,7 @@ public class ListViewWithBannerActivity extends AppCompatActivity implements Pag
         mAdapter = new TextAdapter();
         mRecyclerView.setAdapter(mAdapter);
         mHeadView = View.inflate(this, R.layout.head_view_layout,null);
-        mAdapter.addFooterView(mHeadView);
+        mAdapter.addHeaderView(mHeadView);
         //美团的效果就是new MeiTuanSelfHeaderViewManager(this)，基本的下拉效果new NormalSelfHeaderViewManager(this)
         mRefreshLayout.setSelfHeaderViewManager(new MeiTuanSelfHeaderViewManager(this));
         pageLimitDelegate.attach(mRefreshLayout, mRecyclerView, mAdapter);

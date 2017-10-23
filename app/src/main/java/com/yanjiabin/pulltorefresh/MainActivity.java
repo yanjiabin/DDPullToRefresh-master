@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity  {
     private Class[] classList = new Class[]{GeneralItemActivity.class,
             GridViewItemActivity.class,
             ListViewWithBannerActivity.class,
-            ListViewWithFootViewActivity.class};
+            ListViewWithFootViewActivity.class,
+            ListViewWithFootViewActivity.class
+    };
     private ListView listView;
     private List<String> stringList = new ArrayList<>();
 
