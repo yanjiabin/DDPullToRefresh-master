@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import com.yanjiabin.pulltorefresh.activity.GeneralItemActivity;
 import com.yanjiabin.pulltorefresh.activity.GridViewItemActivity;
+import com.yanjiabin.pulltorefresh.activity.ListViewWithBannerActivity;
+import com.yanjiabin.pulltorefresh.activity.ListViewWithFootViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,10 @@ public class MainActivity extends AppCompatActivity  {
 
     private String[] activityName = new String[] {"普通listview条目","gridview条目","带有头部listview条目","带有脚的listview条目","多类型条目"};
 
-    private Class[] classList = new Class[]{GeneralItemActivity.class,GridViewItemActivity.class};
+    private Class[] classList = new Class[]{GeneralItemActivity.class,
+            GridViewItemActivity.class,
+            ListViewWithBannerActivity.class,
+            ListViewWithFootViewActivity.class};
     private ListView listView;
     private List<String> stringList = new ArrayList<>();
 
