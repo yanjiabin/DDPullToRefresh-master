@@ -18,7 +18,8 @@
         <activity android:name=".activity.GeneralItemActivity" />
         <activity android:name=".activity.GridViewItemActivity" />
         <activity android:name=".activity.ListViewWithBannerActivity" />
-        <activity android:name=".activity.ListViewWithFootViewActivity"></activity>
+        <activity android:name=".activity.ListViewWithFootViewActivity" />
+        <activity android:name=".activity.MultiItemActivity"></activity>
     </application>
 
 </manifest>

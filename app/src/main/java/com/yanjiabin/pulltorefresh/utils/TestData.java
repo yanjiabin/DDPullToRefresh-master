@@ -1,5 +1,7 @@
 package com.yanjiabin.pulltorefresh.utils;
 
+import com.yanjiabin.pulltorefresh.adapter.MultipleItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,20 @@ public class TestData {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
             data.add("测试" + i);
+        }
+        return data;
+    }
+
+    public  static List<MultipleItem> createMultiData() {
+        List<MultipleItem> data = new ArrayList<>();
+        for (int i = 0; i < 40; i++) {
+            if (i %10 ==0){
+                data.add(new MultipleItem(MultipleItem.IMG,""));
+            } else {
+                data.add(new MultipleItem(MultipleItem.TEXT,"andeseng"));
+            }
+
+
         }
         return data;
     }
